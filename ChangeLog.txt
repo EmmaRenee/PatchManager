@@ -1,0 +1,117 @@
+v.0.6.0
+- Fixed Scan-Range function for adding systems by IP range.
+- Bugfixes in Get-PatchAudit function.
+
+v.0.5.3
+- Added new Get-PatchAudit function, replacing the kb test functionality.
+
+v.0.5.2
+- removed IE and Office columns from computers tab
+- added status column to computers tab
+- changed the way the OS architecture is determined on the computers tab
+- commented out all lines in functions.ps1 concerning the kb test while generating the report file. While this is a neat feature, it is simple slow when pushing to larger groups.
+
+v.0.5.1
+- Added .MSP file support.
+
+v.0.5
+- Improved code readability by updating code to conform to coding standard. 
+- Improved logging... replaced LogWrite function with Update-Log and Write-Errorlog functions.
+- Changed the way offline systems are handled while adding computers.
+- Added Test-Timeout function to ensure script doesn't hang on dead WMI calls while adding computers.
+- Wrapping WMI calls in jobs.
+
+v.0.4
+- Added computers tab with additional information on OS, IE, and Office versions found on the system. 
+- Added Get-Audit function to generate audit reports.
+- Removed dead code.
+- Minor bug fixes.
+
+v.0.3.8
+- Files that do not declare a architecture in the filename are not given a type of all and added to both x86 and x64 batch scripts during the build.
+- Add ability to apply x86 patches to x64 based systems. Useful for updating x86 software on x64 systems (i.e. MS Office).
+- Made both DataGridView's for available files and the install list read only. Also disabled the ability for users to add or remove rows in the DataGridView directly without using the PowerShell functions.
+- Bug Fix: fixed null value exception when checking for contents of install list when enabling/disabling install button.
+
+v.0.3.7
+- Replaced Load and Save forms with the standard Windows dialog boxes which are part of the Windows Forms assembly. As a results the load-window.ps1 and save-window.ps1 files have been removed.
+- Bug Fix: fixed a bug in the switches form that would set all switches equal to the custom exe switches.
+
+v.0.3.6
+- Added the menu items for switches and sources to a remote install submenu.
+- Added KeyPress events for adding and removing computers.
+- Added a context menu (right click) for removing computers.
+- Added KeyPress events to available files and install list data grid views to add/remove patches from install list.
+- Added context menus to both the available files list and the install list data grid views to add/remove files from the install list.
+- reflection.assemblies is being deprecated. Replaced with newer add-type cmdlet.
+
+v.0.3.5
+- Bug Fix: Fixed type on save group that would cause the saved file to be blank.
+- Moved remote install gui controls into a tab, making room for further expansion of the tools capabilities.
+- Moved the remaining controls into the synchronized hash. Missed a few on the first go around.
+- Other minor bug fixes.
+
+v.0.3.4
+- Added a MenuStrip to the top of the main window.
+- Filtering out itanium patches from the available files list. These are no longer being displayed.
+- Added buttons to the finshed page of the install wizard to open the install log and report in Notepad/Excel.
+- Enabled startup checks.
+
+v.0.3.3
+- Bug Fix: debug message formating.
+- Changed the temp dir name to be a timestamp. This should prevent conflicts caused by multiple instances of the tool running at the same time.
+
+v.0.3.2
+- Added buttons to installer to view contents of bat files post build.
+- Limited the available files list to only display the supported file types of exe, msi, and msu.
+- Moved img directory into app.
+
+v.0.3.1
+- Reports now include a column for each KB being installed and the columns are auto populated with installed, missing, or n/a.
+- Added a result type of offline.
+- Moved foreach for getting kb numbers. Now only runs once at the beginning of report generation.
+- Changed write-host messages to write-debug. Added DebugPreference to main.ps1.
+
+v.0.3
+- Placed the entire GUI in to a synchronized hash.
+
+v.0.2.3
+- Bug fix: Added input verification to computer list to avoid the input of blank lines.
+- Set throttle limit to 6 threads. 
+- Changed $runspaces to be a synchronized arraylist.
+
+v.0.2.2
+- Added sources button to available files list.
+- Created File Sources window, allowing the user to easily edit their list of file sources.
+- Added switches button to install list.
+- Created Install Switch window, allowing users to modify the switches for the three supported file types.
+
+v.0.2.1
+- Added refresh button to available files list.
+- Created function to populate available files list, eliminating duplicate code in main-window.ps1.
+- Testing connection before creating runspace.
+- Removed redundant Get-SystemType calls in installer and report generation.
+- Bumped throttle limit to 8 threads.
+- Other minor bug fixes.
+
+v.0.2
+- Rewrote installer to use a runspace poll with a throttle limit of 4 threads.
+
+v.0.1.3
+- Added System Type field to reports.
+- Changed PSExec command to utilize -s switch. Needed for MSU files to install.
+- Added CFP Micrcosoft patch folders to available patches list. 
+- Added auto scroll to all status windows.
+
+v.0.1.2
+- Cleaned up log file formatting a little.
+- A new log file is now generated each time the Wizard is run, rather than each time the Patch Manger is started. One log file per push.
+- Changed main window title.
+- Changed Scan-Range function to provide better status updates.
+
+v.0.1.1
+- Added functionality to add Computers from an IP Range.
+- Computers list now clears before a new group or IP Range is added/loaded.
+
+v.0.1
+- First release.
